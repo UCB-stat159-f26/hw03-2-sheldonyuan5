@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools >= 70"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tennisplot"
+authors = [{ name="Sheldon Yuan", email="yuanyl.sheldon@berkeley.edu" },]
+description = "Retrieve a tennis player's career matches from tennisabstract.com and plot them in the style of the NYT Serena Williams graphic"
+readme = "README.md"
+
+requires-python = ">=3.10"
+dependencies = ["pandas", "matplotlib >= 3.5",]
+
+classifiers = ["Programming Language :: Python :: 3", "Operating System :: OS Independent"]
+
+keywords = ["tennis", "tennisabstract", "visualization"]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://github.com/stat159/hw03-2-sheldonyuan5"
+
+[tool.setuptools]
+packages = ["tennisplot", "tennisplot.data", "tennisplot.plot"]
+
+[tool.setuptools.dynamic]
+version = {attr = "tennisplot.__version__"}
