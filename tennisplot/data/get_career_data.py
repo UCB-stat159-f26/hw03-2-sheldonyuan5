@@ -16,10 +16,9 @@ NOT_FOUND_MESSAGE = ("No player named '{}' found on tennisabstract.com (HTTP {})
 def get_career_matches(player_name):
     url_name = _format_name(player_name)
     career_url = f"{BASE_URL}/jsmatches/{url_name}Career.js"
+    profile_url = f"{BASE_URL}/jsmatches/{url_name}.js"
     matches = _parse_matches(_download_text(career_url, player_name))
-    page = "wplayer" if _is_female(matches) else "player"
-    page_url = f"{BASE_URL}/cgi-bin/{page}-classic.cgi?p={url_name}"
-    birth_date = _parse_birth_date(_download_text(page_url, player_name))
+    birth_date = _parse_birth_date(_download_text(profile_url, player_name))
     return _build_table(matches, birth_date, _display_name(url_name))
 
 def _format_name(player_name):
@@ -46,8 +45,8 @@ def _is_female(matches):
     first_value = matches[0][OPPONENT_INFO]
     return len(first_value) == 8 and first_value.isdigit()
 
-def _parse_birth_date(page_text):
-    found = re.search(r"var dob\s*=\s*(\d{8})", page_text)
+def _parse_birth_date(profile_text):
+    found = re.search(r"var dob\s*=\s*(\d{8})", profile_text)
     if found is None:
         raise ValueError("Could not find the player's birth date on tennisabstract.com")
     return pd.to_datetime(found.group(1), format="%Y%m%d")
