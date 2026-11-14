@@ -1,7 +1,7 @@
 # HW 3 R/Python Package
 
-**Author**: Sheldon Yuan
-**Date started**: November 13, 2026
+- **Author**: Sheldon Yuan
+- **Date started**: November 13, 2026
 
 ## Description
 
@@ -36,21 +36,23 @@ For a player such as Serena Williams, the package reads two files from tennisabs
   player's own birth date (`var dob=...`).
 
 ## Project File Structure
-
+```
+.
 ├── README.md
-├── pyproject.toml # package metadata, dependencies, install settings
+├── pyproject.toml              # package metadata, dependencies, install settings
 └── tennisplot/
-├── init.py # version + the two public functions
-├── data/
-│ ├── init.py
-│ └── get_career_data.py # get_career_matches() and its helpers
-├── plot/
-│ ├── init.py
-│ └── plot_data.py # plot_career_matches() and its helpers
-└── tests/
-├── FemalePlayerCareer.JS # mockup female career file
-├── MalePlayerCareer.JS # mockup male career file
-└── test_get_career_data.py
+    ├── __init__.py             # version + the two public functions
+    ├── data/
+    │   ├── __init__.py
+    │   └── get_career_data.py  # get_career_matches() and its helpers
+    ├── plot/
+    │   ├── __init__.py
+    │   └── plot_data.py        # plot_career_matches() and its helpers
+    └── tests/
+        ├── FemalePlayerCareer.JS   # mockup female career file
+        ├── MalePlayerCareer.JS     # mockup male career file
+        └── test_get_career_data.py
+```
 
 ## Personal Reflection
 
